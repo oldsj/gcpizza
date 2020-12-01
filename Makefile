@@ -62,7 +62,9 @@ app-image:
 .PHONY: app-image
 
 ##app-server:		Start the server in the container environment,
-##			accessible on the host at http://0.0.0.0:8000
+##			accessible on the host at http://0.0.0.0:8080
 app-server: app-image
-	@docker run -it -p 8000:8000 ${project_name}
+	@docker run --rm \
+	-it -p 8080:8080 \
+	--name ${project_name} ${project_name}
 .PHONY: app-server
